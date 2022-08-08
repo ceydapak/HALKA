@@ -12,6 +12,7 @@ namespace _HALKA.Data
         public DbSet<Library> Libraries{ get; set; }
         public DbSet<Coupon> Coupons { get; set; }
         public DbSet<BookCategory> BookCategories { get; set; }
+     
 
     }
 }

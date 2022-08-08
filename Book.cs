@@ -11,12 +11,13 @@ namespace _HALKA
         public int BookId { get; set; }
         public string BookName { get; set; } = string.Empty;
         public string Writer { get; set; } = string.Empty;
-        public string Publisher { get; set; } = string.Empty;
-        public DateTime PublishDate { get; set; }
+        public string? Publisher { get; set; } = string.Empty;
+        public DateTime? PublishDate { get; set; }
         public string LibraryName { get; set; }
         public string BookAbout { get; set; } = string.Empty;
         public int BookPoint { get; set; }
-        public string BookCategoryName { get; set; }
-       
+        public string BookCategoryName { get; set; } = string.Empty;
+        public string? BookImgUrl { get; set; } = string.Empty;
+
     }
 }

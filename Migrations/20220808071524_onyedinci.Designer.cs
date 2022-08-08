@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _HALKA.Data;
 
@@ -11,9 +12,10 @@ using _HALKA.Data;
 namespace _HALKA.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220808071524_onyedinci")]
+    partial class onyedinci
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,12 +187,10 @@ namespace _HALKA.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PResetToken")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<byte[]>("PasswordHash")
                         .IsRequired()
@@ -202,9 +202,6 @@ namespace _HALKA.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ResetTokenE")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("School")
                         .HasColumnType("nvarchar(max)");
@@ -222,12 +219,6 @@ namespace _HALKA.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("VAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("VerToken")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
