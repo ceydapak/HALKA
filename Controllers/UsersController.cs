@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using _HALKA.Data;
-
+using System.Security.Claims;
 
 namespace _HALKA.Controllers
 {
@@ -50,6 +50,11 @@ namespace _HALKA.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
+            var currentUser = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if (currentUser != user.UserId)
+            {
+                return Unauthorized();
+            }
             if (id != user.UserId)
             {
                 return BadRequest();
@@ -93,8 +98,13 @@ namespace _HALKA.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> DeleteUser(int id, User user1)
         {
+            var currentUser = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if (currentUser != user1.UserId)
+            {
+                return Unauthorized();
+            }
             if (_context.Users == null)
             {
                 return NotFound();

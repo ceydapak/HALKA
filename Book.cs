@@ -16,7 +16,7 @@ namespace _HALKA
         public string LibraryName { get; set; }
         public string BookAbout { get; set; } = string.Empty;
         public int BookPoint { get; set; }
-        public string BookCategoryName { get; set; } = string.Empty;
+        public string? BookCategoryName { get; set; } = string.Empty;
         public string? BookImgUrl { get; set; } = string.Empty;
 
     }
